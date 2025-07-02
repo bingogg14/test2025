@@ -36,3 +36,4 @@ auth.json
 
 *.log
 .DS_Store
+_ide_helper_models.php

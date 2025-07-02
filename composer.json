@@ -11,6 +11,7 @@
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.5",
         "fakerphp/faker": "^1.23",
         "friendsofphp/php-cs-fixer": "^3.76",
         "laravel/pail": "^1.2.2",
@@ -38,7 +39,9 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -56,6 +59,17 @@
             "@php artisan config:clear --ansi",
             "@php artisan test"
         ],
+        "deploy": [
+            "@php artisan down",
+            "composer install --no-dev --prefer-dist --optimize-autoloader",
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache",
+            "@php artisan migrate --force",
+            "@php artisan up"
+        ],
+        "models:docs:view": "php artisan ide-helper:models --nowrite",
+        "models:docs": "@php artisan ide-helper:models --write",
         "cs:check": "php-cs-fixer fix --config=.php-cs-fixer.dist.php --dry-run --diff --allow-risky=yes",
         "cs:fix":   "php-cs-fixer fix --config=.php-cs-fixer.dist.php --quiet"
     },
