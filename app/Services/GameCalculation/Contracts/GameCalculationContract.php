@@ -6,7 +6,7 @@ namespace App\Services\GameCalculation\Contracts;
 
 use App\Enums\StatusGame;
 
-interface GameCalculation
+interface GameCalculationContract
 {
     /**
      * Method is processing business-logic calculation relative from score

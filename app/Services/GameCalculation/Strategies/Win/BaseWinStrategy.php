@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Services\GameCalculation\Strategies\Win;
 
 use App\Enums\StatusGame;
-use App\Services\GameCalculation\Contracts\GameCalculationStrategy;
+use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 
-abstract class BaseWinStrategy implements GameCalculationStrategy
+abstract class BaseWinStrategy implements GameCalculationContractStrategy
 {
     /** {@inheritDoc} **/
     public static function getStatus(): StatusGame

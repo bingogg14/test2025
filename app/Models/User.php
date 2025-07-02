@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
  * @property int $id
@@ -36,12 +40,13 @@ use Illuminate\Notifications\Notifiable;
  *
  * @mixin \Eloquent
  */
-class User extends Authenticatable
+class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-
     use Notifiable;
+    use Authenticatable;
+    use Authorizable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,9 +54,8 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'username',
+        'phone'
     ];
 
     /**
@@ -60,7 +64,6 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -71,9 +74,23 @@ class User extends Authenticatable
      */
     protected function casts(): array
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return [];
+    }
+
+    public function authTokens(): HasMany
+    {
+        return $this->hasMany(AuthToken::class);
+    }
+
+    public function gameHistories(): HasMany
+    {
+        return $this->hasMany(UserGameHistory::class);
+    }
+
+    public function lastGameHistories(): HasMany
+    {
+        return $this->hasMany(UserGameHistory::class)
+            ->limit(3)
+            ->orderBy('created_at', 'desc');
     }
 }

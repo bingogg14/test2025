@@ -7,7 +7,7 @@ namespace App\Services\GameCalculation\Contracts;
 use App\Enums\StatusGame;
 use App\Services\GameCalculation\DTO\GameCalculationResultDTO;
 
-interface GameManager
+interface GameManagerContract
 {
     /**
      *

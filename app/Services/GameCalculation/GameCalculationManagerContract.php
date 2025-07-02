@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Services\GameCalculation;
 
-use App\Services\GameCalculation\Contracts\GameCalculationStrategy;
-use App\Services\GameCalculation\Contracts\GameManager;
+use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
+use App\Services\GameCalculation\Contracts\GameManagerContract;
 use App\Services\GameCalculation\DTO\GameCalculationResultDTO;
 use NotFoundStrategy;
 use NotValidStrategyClass;
 
-final readonly class GameCalculationManager implements GameManager
+final readonly class GameCalculationManagerContract implements GameManagerContract
 {
     /**
      * All Strategies game if possible & sorted by priority
      *
-     * @var GameCalculationStrategy[]
+     * @var GameCalculationContractStrategy[]
      */
     private array $strategies;
 
@@ -24,14 +24,14 @@ final readonly class GameCalculationManager implements GameManager
      * - check each strategy on implement interface
      * - sort each strategy for choose strategy by priority
      *
-     * @param  GameCalculationStrategy[]|array  $strategies
+     * @param  GameCalculationContractStrategy[]|array  $strategies
      */
     public function __construct(array $strategies)
     {
 
         // check param strategies on implement interface
         foreach ($strategies as $strategy) {
-            if (! $strategy instanceof GameCalculationStrategy) {
+            if (! $strategy instanceof GameCalculationContractStrategy) {
                 throw new NotValidStrategyClass;
             }
         }
@@ -40,7 +40,7 @@ final readonly class GameCalculationManager implements GameManager
         // sorting strategies by priority
         usort(
             $items,
-            function (GameCalculationStrategy $a, GameCalculationStrategy $b): int {
+            function (GameCalculationContractStrategy $a, GameCalculationContractStrategy $b): int {
                 return $b::getPriority() <=> $a::getPriority();
             }
         );
@@ -58,7 +58,8 @@ final readonly class GameCalculationManager implements GameManager
         return new GameCalculationResultDTO(
             sum: $strategy->calculate($score),
             score: $score,
-            status: $strategy->getStatus()
+            status: $strategy->getStatus(),
+            createdAt: now()->toImmutable()
         );
     }
 
@@ -66,7 +67,7 @@ final readonly class GameCalculationManager implements GameManager
      * Get strategy for game & before get it validating pass on choose
      * specify strategy
      */
-    private function getStrategy(int $score): GameCalculationStrategy
+    private function getStrategy(int $score): GameCalculationContractStrategy
     {
         foreach ($this->strategies as $strategy) {
             if ($strategy->isValid($score)) {

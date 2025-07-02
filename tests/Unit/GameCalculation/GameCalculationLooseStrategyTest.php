@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Unit\GameCalculation;
 
-use App\Services\GameCalculation\Contracts\GameCalculationStrategy;
+use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 use App\Services\GameCalculation\Strategies\Loose\NotEvenScoreStrategy;
 use App\Services\GameCalculation\Strategies\Win\FiftyPercentStrategy;
 use App\Services\GameCalculation\Strategies\Win\SeventyPercentStrategy;
 use App\Services\GameCalculation\Strategies\Win\TenPercentStrategy;
 use App\Services\GameCalculation\Strategies\Win\ThirtyPercentStrategy;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class GameCalculationLooseStrategyTest extends TestCase
@@ -24,16 +25,15 @@ class GameCalculationLooseStrategyTest extends TestCase
     /**
      * Check calculate is correct each loose strategy
      *
-     * @dataProvider providerLooseStrategy
-     *
-     * @param  GameCalculationStrategy  $strategy
+     * @param  GameCalculationContractStrategy  $strategy
      * @param  int  $score
      * @param  float  $expectedSum
      * @param  int  $invalidScore
      * @return void
      */
+    #[DataProvider('providerLooseStrategy')]
     public function test_calculate_correct_loose_strategy(
-        GameCalculationStrategy $strategy,
+        GameCalculationContractStrategy $strategy,
         int $score,
         float $expectedSum,
         int $invalidScore,
@@ -49,16 +49,15 @@ class GameCalculationLooseStrategyTest extends TestCase
     /**
      * Check on invalid score each loose strategy
      *
-     * @dataProvider providerLooseStrategy
-     *
-     * @param  GameCalculationStrategy  $strategy
+     * @param  GameCalculationContractStrategy  $strategy
      * @param  int  $score
      * @param  float  $expectedSum
      * @param  int  $invalidScore
      * @return void
      */
+    #[DataProvider('providerLooseStrategy')]
     public function test_valid_false_below_threshold_loose_strategy(
-        GameCalculationStrategy $strategy,
+        GameCalculationContractStrategy $strategy,
         int $score,
         float $expectedSum,
         int $invalidScore

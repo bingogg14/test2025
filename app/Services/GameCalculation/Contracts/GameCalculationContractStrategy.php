@@ -6,7 +6,7 @@ namespace App\Services\GameCalculation\Contracts;
 
 use App\Enums\StatusGame;
 
-interface GameCalculationStrategy extends GameCalculation
+interface GameCalculationContractStrategy extends GameCalculationContract
 {
     /**
      * Method validating score on possible calculate

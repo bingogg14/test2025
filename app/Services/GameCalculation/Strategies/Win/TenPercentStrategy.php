@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Services\GameCalculation\Strategies\Win;
 
-use App\Services\GameCalculation\Contracts\GameCalculationStrategy;
+use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 
-final class TenPercentStrategy extends BaseWinStrategy implements GameCalculationStrategy
+final class TenPercentStrategy extends BaseWinStrategy implements GameCalculationContractStrategy
 {
     private const MAX_SCORE = 300;
     private const PERCENT = 0.1;
-    private const PRIORITY = 2; // 4 - check in list
+    private const PRIORITY = 1;
 
     /** {@inheritDoc} **/
     public function isValid(int $score): bool

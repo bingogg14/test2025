@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Services\GameCalculation\Strategies\Loose;
 
 use App\Enums\StatusGame;
-use App\Services\GameCalculation\Contracts\GameCalculationStrategy;
+use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 
-abstract class BaseLooseStrategy implements GameCalculationStrategy
+abstract class BaseLooseStrategy implements GameCalculationContractStrategy
 {
     /** {@inheritDoc} **/
     public function calculate(int $score): float
