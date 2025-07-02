@@ -7,8 +7,8 @@ namespace App\Services\GameCalculation;
 use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 use App\Services\GameCalculation\Contracts\GameManagerContract;
 use App\Services\GameCalculation\DTO\GameCalculationResultDTO;
-use NotFoundStrategy;
-use NotValidStrategyClass;
+use App\Services\GameCalculation\Exceptions\NotFoundStrategy;
+use App\Services\GameCalculation\Exceptions\NotValidStrategyClass;
 
 final readonly class GameCalculationManagerContract implements GameManagerContract
 {

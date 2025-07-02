@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\GameCalculation;
+namespace Tests\Unit\GameCalculation;
 
 use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 use App\Services\GameCalculation\Strategies\Win\FiftyPercentStrategy;

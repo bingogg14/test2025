@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\GameCalculation;
+namespace Tests\Unit\GameCalculation;
 
 use PHPUnit\Framework\TestCase;
 

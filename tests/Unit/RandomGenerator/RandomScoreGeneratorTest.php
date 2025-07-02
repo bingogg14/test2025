@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\RandomGenerator;
+namespace Tests\Unit\RandomGenerator;
 
 use App\Services\Randomizer\Contracts\RandomScoreGenerator;
 use App\Services\Randomizer\GetRandomScoreGenerator;
