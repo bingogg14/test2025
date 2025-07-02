@@ -10,7 +10,7 @@ use App\Services\GameCalculation\DTO\GameCalculationResultDTO;
 use App\Services\GameCalculation\Exceptions\NotFoundStrategy;
 use App\Services\GameCalculation\Exceptions\NotValidStrategyClass;
 
-final readonly class GameCalculationManagerContract implements GameManagerContract
+final readonly class GameCalculationManager implements GameManagerContract
 {
     /**
      * All Strategies game if possible & sorted by priority

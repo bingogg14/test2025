@@ -19,7 +19,7 @@ use App\Services\Game\Contracts\UserGameHistoryFactoryContract;
 use App\Services\Game\Factory\UserGameHistoryFactory;
 use App\Services\Game\GameRunner;
 use App\Services\GameCalculation\Contracts\GameManagerContract;
-use App\Services\GameCalculation\GameCalculationManagerContract;
+use App\Services\GameCalculation\GameCalculationManager;
 use App\Services\GameCalculation\Strategies\Loose\NotEvenScoreStrategy;
 use App\Services\GameCalculation\Strategies\Win\FiftyPercentStrategy;
 use App\Services\GameCalculation\Strategies\Win\SeventyPercentStrategy;
@@ -67,7 +67,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Register Game Manager
         $this->app->singleton(GameManagerContract::class, function ($app) {
-            return new GameCalculationManagerContract([
+            return new GameCalculationManager([
                 $app->make(NotEvenScoreStrategy::class),
                 $app->make(SeventyPercentStrategy::class),
                 $app->make(FiftyPercentStrategy::class),
