@@ -24,7 +24,15 @@ Homestead.json
 
 /public/build
 /storage/pail
+.env
 .env.backup
 .env.production
 .phpactor.json
 auth.json
+
+/.idea
+/.fleet
+/.vscode
+
+*.log
+.DS_Store
