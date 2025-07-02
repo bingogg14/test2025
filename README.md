@@ -1,6 +1,7 @@
 ## Initial Project for testing
 - Install php packages `composer install`
 - Install node packages `npm install`
+- Build node packages `npm run build`
 - Generate key app `php artisan key:generate`
 - Copy .env `cp .env.example .env`
 - Run `php artisan migrate`
