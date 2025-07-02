@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services\GameCalculation\Strategies\Win;
+
+use App\Enums\StatusGame;
+use App\Services\GameCalculation\Contracts\GameCalculationStrategy;
+
+abstract class BaseWinStrategy implements GameCalculationStrategy
+{
+    /** {@inheritDoc} **/
+    public static function getStatus(): StatusGame
+    {
+        return StatusGame::WIN;
+    }
+
+    /**
+     * Formatter result float to float with 2-digits after comma
+     *  - example: 5.55
+     *
+     * @param  float  $score
+     * @return float
+     */
+    protected function formatScore(float $score): float
+    {
+        return $score;
+    }
+}
