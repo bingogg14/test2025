@@ -8,6 +8,18 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+# ────────────────────────────────────
+# PHP
+# ────────────────────────────────────
+[*.php]
+max_line_length          = 120
+
+# ────────────────────────────────────
+# Laravel Blade templates
+# ────────────────────────────────────
+[*.blade.php]
+trim_trailing_whitespace = false
+
 [*.md]
 trim_trailing_whitespace = false
 
@@ -16,3 +28,18 @@ indent_size = 2
 
 [docker-compose.yml]
 indent_size = 4
+
+# ────────────────────────────────────
+# ENV files
+# ────────────────────────────────────
+[.env*]
+indent_style             = space
+indent_size              = 2
+trim_trailing_whitespace = false
+
+# ────────────────────────────────────
+# Docker
+# ────────────────────────────────────
+[Dockerfile]
+indent_style             = space
+indent_size              = 2
