@@ -14,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
+ * 
+ *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -24,7 +26,6 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- *
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
@@ -37,7 +38,16 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
- *
+ * @property string $username
+ * @property string $phone
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserGameHistory> $gameHistories
+ * @property-read int|null $game_histories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserGameHistory> $lastGameHistories
+ * @property-read int|null $last_game_histories_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUsername($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserAuthToken> $authTokens
+ * @property-read int|null $auth_tokens_count
  * @mixin \Eloquent
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
@@ -79,7 +89,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public function authTokens(): HasMany
     {
-        return $this->hasMany(AuthToken::class);
+        return $this->hasMany(UserAuthToken::class);
     }
 
     public function gameHistories(): HasMany
