@@ -21,6 +21,6 @@ abstract class BaseWinStrategy implements GameCalculationContractStrategy
      */
     protected function formatScore(float $score): float
     {
-        return $score;
+        return round($score, 2);
     }
 }
