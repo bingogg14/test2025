@@ -13,10 +13,10 @@ final class MagicLinkFactory implements MagicLinkFactoryContract
     {
         $expiredAt = now()->addDays(7);
 
-        $model = new UserAuthToken();
-        $model->user_id = $userId;
-        $model->active = true;
-        $model->token = $this->getHash($userId, $expiredAt);
+        $model             = new UserAuthToken();
+        $model->user_id    = $userId;
+        $model->active     = true;
+        $model->token      = $this->getHash($userId, $expiredAt);
         $model->expired_at = $expiredAt;
 
         return $model;
@@ -25,6 +25,7 @@ final class MagicLinkFactory implements MagicLinkFactoryContract
     private function getHash(int $userId, $expiredAt): string
     {
         $timestamp = time();
-        return hash('sha256', $userId.$timestamp.$expiredAt.'_salt');
+
+        return hash('sha256', $userId . $timestamp . $expiredAt . '_salt');
     }
 }

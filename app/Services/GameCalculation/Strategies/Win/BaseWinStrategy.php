@@ -18,9 +18,6 @@ abstract class BaseWinStrategy implements GameCalculationContractStrategy
     /**
      * Formatter result float to float with 2-digits after comma
      *  - example: 5.55
-     *
-     * @param  float  $score
-     * @return float
      */
     protected function formatScore(float $score): float
     {

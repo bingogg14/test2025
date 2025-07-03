@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 final readonly class MagicLinkAuthorize implements MagicLinkAuthorizeContract
 {
-
     public function authorize(string $token): bool
     {
         // can be use repo

@@ -9,13 +9,14 @@ readonly class SignUpRequestDTO
     public function __construct(
         public string $username,
         public string $phone
-    ) {}
+    ) {
+    }
 
     public function toArray(): array
     {
         return [
             'username' => $this->username,
-            'phone' => $this->phone,
+            'phone'    => $this->phone,
         ];
     }
 }

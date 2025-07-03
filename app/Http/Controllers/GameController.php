@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Models\UserGameHistory;
 use App\Services\Game\Contracts\GameRunnerContract;
 use Illuminate\Http\Request;
 
@@ -10,23 +11,24 @@ class GameController extends Controller
 {
     public function __construct(
         private readonly GameRunnerContract $gameRunner,
-    )
-    {
+    ) {
 
     }
 
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         return view('pages.game', []);
     }
 
-    public function run(Request $request) {
+    public function run(Request $request)
+    {
         $result = $this->gameRunner->run(auth()->id());
 
         return view('pages.game', [
-            'score' => $result->score,
-            'sum' => $result->sum,
-            'status' => $result->status->value,
-            'statusLabel' => $result->status->getLabel()
+            'score'       => $result->score,
+            'sum'         => $result->sum,
+            'status'      => $result->status->value,
+            'statusLabel' => $result->status->getLabel(),
         ]);
     }
 
@@ -36,7 +38,7 @@ class GameController extends Controller
         $history = auth()->user()->lastGameHistories;
 
         return view('pages.history', [
-            'history' => $history
+            'history' => $history,
         ]);
     }
 }

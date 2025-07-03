@@ -9,8 +9,8 @@ use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 final class ThirtyPercentStrategy extends BaseWinStrategy implements GameCalculationContractStrategy
 {
     private const MIN_SCORE = 300;
-    private const PERCENT = 0.3;
-    private const PRIORITY = 2;
+    private const PERCENT   = 0.3;
+    private const PRIORITY  = 2;
 
     /** {@inheritDoc} **/
     public function isValid(int $score): bool

@@ -6,8 +6,8 @@ namespace App\Services\Game\Contracts;
 
 use App\Models\UserGameHistory;
 use App\Services\GameCalculation\DTO\GameCalculationResultDTO;
-use Carbon\CarbonImmutable;
 
-interface UserGameHistoryFactoryContract {
+interface UserGameHistoryFactoryContract
+{
     public function createHistory(GameCalculationResultDTO $resultDTO, int $userId): UserGameHistory;
 }

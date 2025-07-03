@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Services\AuthMagicLink\Contracts\MagicLinkServiceContract;
@@ -9,11 +11,13 @@ class LinkController extends Controller
 {
     public function __construct(
         private MagicLinkServiceContract $magicLinkService,
-    ) {}
+    ) {
+    }
 
     public function index(Request $request, string $link)
     {
         $fullUrlLink = route('auth.magic-link', ['token' => $link]);
+
         return view('pages.link-show', ['link' => $fullUrlLink]);
     }
 

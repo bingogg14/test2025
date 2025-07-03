@@ -6,6 +6,7 @@ namespace App\Services\Game\Contracts;
 
 use App\Services\GameCalculation\DTO\GameCalculationResultDTO;
 
-interface GameRunnerContract {
+interface GameRunnerContract
+{
     public function run(int $userId): GameCalculationResultDTO;
 }

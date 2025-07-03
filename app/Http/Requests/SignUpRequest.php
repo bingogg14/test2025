@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use App\Services\SignUp\DTO\Requests\SignUpRequestDTO;
@@ -24,7 +26,7 @@ class SignUpRequest extends FormRequest
     {
         return [
             'username' => 'required|string|max:255|unique:users,username',
-            'phone' => 'required|string|max:255',
+            'phone'    => 'required|string|max:255',
         ];
     }
 

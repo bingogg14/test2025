@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services\GameCalculation\Strategies\Loose;
 
-use App\Enums\StatusGame;
 use App\Services\GameCalculation\Contracts\GameCalculationContractStrategy;
 
 final class NotEvenScoreStrategy extends BaseLooseStrategy implements GameCalculationContractStrategy

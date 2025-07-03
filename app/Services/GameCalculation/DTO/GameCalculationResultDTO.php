@@ -14,16 +14,17 @@ final readonly class GameCalculationResultDTO
         public float $score,
         public StatusGame $status,
         public CarbonImmutable $createdAt
-    ) {}
+    ) {
+    }
 
     public function toArray(): array
     {
         return [
-            'sum' => $this->sum,
-            'score' => $this->score,
+            'sum'    => $this->sum,
+            'score'  => $this->score,
             'status' => [
                 'value' => $this->status->value,
-                'name' => $this->status->name,
+                'name'  => $this->status->name,
             ],
             'createdAt' => CarbonImmutable::now()->toDateTimeString(),
         ];

@@ -10,5 +10,6 @@ readonly class SignUpDTO
         public int $userId,
         public string $username,
         public string $magicLink
-    ) {}
+    ) {
+    }
 }

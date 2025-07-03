@@ -23,7 +23,7 @@ Route::prefix('link')->group(function () {
     Route::get('/{token}', [LinkController::class, 'index'])->name('link.index');
     Route::middleware('auth')->group(function () {
         Route::put('/generate', [LinkController::class, 'store'])->name('link.store');
-//        Route::post('/activate', [LinkController::class, 'activate'])->name('link.activate');
+        //        Route::post('/activate', [LinkController::class, 'activate'])->name('link.activate');
         Route::delete('/revoke', [LinkController::class, 'revoke'])->name('link.revoke');
     });
 });

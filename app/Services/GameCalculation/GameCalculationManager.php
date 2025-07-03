@@ -24,7 +24,7 @@ final readonly class GameCalculationManager implements GameManagerContract
      * - check each strategy on implement interface
      * - sort each strategy for choose strategy by priority
      *
-     * @param  GameCalculationContractStrategy[]|array  $strategies
+     * @param GameCalculationContractStrategy[]|array $strategies
      */
     public function __construct(array $strategies)
     {
@@ -32,7 +32,7 @@ final readonly class GameCalculationManager implements GameManagerContract
         // check param strategies on implement interface
         foreach ($strategies as $strategy) {
             if (! $strategy instanceof GameCalculationContractStrategy) {
-                throw new NotValidStrategyClass;
+                throw new NotValidStrategyClass();
             }
         }
 
@@ -75,6 +75,6 @@ final readonly class GameCalculationManager implements GameManagerContract
             }
         }
 
-        throw new NotFoundStrategy;
+        throw new NotFoundStrategy();
     }
 }

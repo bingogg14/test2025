@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Traits\Auth;
 
 trait Authenticatable
@@ -23,8 +25,6 @@ trait Authenticatable
 
     /**
      * Get the unique identifier for the user.
-     *
-     * @return mixed
      */
     public function getAuthIdentifier()
     {
@@ -33,8 +33,6 @@ trait Authenticatable
 
     /**
      * Get the unique broadcast identifier for the user.
-     *
-     * @return mixed
      */
     public function getAuthIdentifierForBroadcasting()
     {
@@ -76,7 +74,7 @@ trait Authenticatable
     /**
      * Set the token value for the "remember me" session.
      *
-     * @param  string  $value
+     * @param string $value
      * @return void
      */
     public function setRememberToken($value)

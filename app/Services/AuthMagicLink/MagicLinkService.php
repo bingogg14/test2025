@@ -19,7 +19,8 @@ final readonly class MagicLinkService implements MagicLinkServiceContract
         private MagicLinkRevokerContract $magicLinkRevoker,
         private MagicLinkFactoryContract $magicLinkFactory,
         private MagicLinkAuthorizeContract $magicLinkAuthorize,
-    ) {}
+    ) {
+    }
 
     public function activate(int $userId, string $token): bool
     {
@@ -41,6 +42,7 @@ final readonly class MagicLinkService implements MagicLinkServiceContract
     public function putAuthToken(string $token): bool
     {
         Session::put('last_magic_token', $token);
+
         return true;
     }
 
@@ -55,6 +57,7 @@ final readonly class MagicLinkService implements MagicLinkServiceContract
 
         if ($token !== null && $this->magicLinkRevoker->revoke($userId, $token)) {
             Session::forget('last_magic_token');
+
             return true;
         };
 

@@ -11,7 +11,8 @@ class AuthController extends Controller
 {
     public function __construct(
         private readonly MagicLinkServiceContract $magicLinkService,
-    ) {}
+    ) {
+    }
 
     public function authorize(Request $request, string $token)
     {

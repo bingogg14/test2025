@@ -9,7 +9,6 @@ use App\Services\AuthMagicLink\Contracts\MagicLinkActivatorContract;
 
 final readonly class MagicLinkActivator implements MagicLinkActivatorContract
 {
-
     public function activate(int $userId, string $token): bool
     {
         // can be use repo
@@ -24,7 +23,7 @@ final readonly class MagicLinkActivator implements MagicLinkActivatorContract
         }
 
         return $tokenModel->update([
-            'active' => true,
+            'active'     => true,
             'expired_at' => now()->addDays(7), // can move in config or use other method
         ]);
     }
